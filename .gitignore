@@ -1,0 +1,4 @@
+.idea
+doc/
+Gemfile.lock
+git-pairing-*.*.*.gem
