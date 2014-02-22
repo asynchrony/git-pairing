@@ -4,6 +4,8 @@ Share code authorship when pairing and using git/github.  Display a
 customized bash prompt to show branch, pairing authors, and colorized
 git status.
 
+[MIT Licensed](./LICENSE)
+
 # Features
 
 * adds new commands to git, `git pair`, `git whoami`, and `git solo`

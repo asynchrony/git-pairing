@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("{bin,lib}/**/*")
   s.require_paths << 'lib'
   s.has_rdoc = true
-  s.extra_rdoc_files = ['README.md']
+  s.extra_rdoc_files = ['README.md', 'LICENSE']
   s.rdoc_options << '--title' << 'git-pairing' << '--main' << 'README.md'
   s.bindir = 'bin'
   s.executables   = ['git-pair', 'git-solo', 'git-whoami', 'git-who']
