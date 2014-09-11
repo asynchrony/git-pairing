@@ -121,7 +121,7 @@ jam
       else
         install_with = <<jam
 source ~/.git-pairing-prompt.sh
-PROMPT_COMMAND=__git_pairing_prompt
+export PROMPT_COMMAND='__git_pairing_prompt; echo -ne "\033];${PWD##*/}\007"'
 jam
         puts ""
         puts Paint["If you had an older version previously installed, edit your .bash_profile/.bashrc file to remove the following lines:", :yellow]
