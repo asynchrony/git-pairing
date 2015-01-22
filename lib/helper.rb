@@ -155,22 +155,21 @@ jam
 
     def self.set(conf, authors)
       self.git_repo?
+      emails = authors.map { |a| a[2] }
+      first_email = emails.find(lambda { "" }) { |e| !e.nil? && !e.empty? }
       authors.sort!
       sorted_authors = ""
       sorted_initials = ""
-      sorted_emails = ""
       authors.each do |a|
         sorted_authors << a[0]
         sorted_initials << a[1]
-        sorted_emails << a[2]
         if authors.index(a) < authors.size-1
           sorted_authors << conf['delimiters']['name']
           sorted_initials << conf['delimiters']['initials']
-          sorted_emails << conf['delimiters']['email']
         end
         cmd_git = `git config user.name "#{sorted_authors}"`
         cmd_git = `git config user.initials "#{sorted_initials}"`
-        cmd_git = `git config user.email "#{sorted_emails}"`
+        cmd_git = `git config user.email "#{first_email}"`
       end
     end
 
