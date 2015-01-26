@@ -27,7 +27,7 @@ module GitPairs
         end
         #concatenate each partner's info into delimited strings
         author =  GitPairs::Helper.fetch(conf, partner)
-        name = author["username"]
+        name = author["name"]
         email = author["email"]
         authors << ["#{name}", "#{partner}", "#{email}"]
       end

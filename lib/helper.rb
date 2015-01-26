@@ -55,10 +55,9 @@ module GitPairs
         initials = ""
         name.strip.downcase.split(/ /).each { |n| initials << n.split(//)[0] }
         email = `git config --global --get user.email`
-        username = email.split("@")[0]
         default_conf = YAML::Store.new(path_to_conf)
         default_conf.transaction do
-          default_conf["pairs"] = {"#{initials}" => {'name'=>"#{name.strip}", 'username'=>"#{username}", 'email'=>"#{email.strip}"} }
+          default_conf["pairs"] = {"#{initials}" => {'name'=>"#{name.strip}", 'email'=>"#{email.strip}"} }
           default_conf["delimiters"] = {"name" => " / ", "initials" => " ", "email" => " , "}
         end
       end
@@ -96,11 +95,8 @@ module GitPairs
         puts ""
         puts Paint["Please provide info for: #{initials}", :yellow]
         name = ask("Full Name: ").to_s
-        user = ask("Git Username: ")
-        #just in case they supply email address
-        user = user.split('@')[0].to_s
         email = ask("Email: ").to_s
-        partner = {initials => {'name' => name, 'username' => user, 'email' => email}}
+        partner = {initials => {'name' => name, 'email' => email}}
         conf["pairs"].update(partner)
         temp_conf = YAML::Store.new(path_to_conf)
         temp_conf.transaction do
