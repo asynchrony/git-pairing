@@ -29,7 +29,7 @@ module GitPairs
         author =  GitPairs::Helper.fetch(conf, partner)
         name = author["username"]
         email = author["email"]
-        authors << ["#{name}","#{partner}", "#{email}"]
+        authors << ["#{name}", "#{partner}", "#{email}"]
       end
       GitPairs::Helper.set(conf, authors)
     end
